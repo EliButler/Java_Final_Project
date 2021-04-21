@@ -1,5 +1,5 @@
 # Java_Final_Project
-My code base the my java project
+My code base for my java project.
 
 You will be creating a Mad Lib based on the poem The Raven. Every time you run the program, a different set of words
 will be displayed.
