@@ -1,0 +1,4 @@
+Okay, so I finally figured out the file system. It seems there is a big difference
+between java 1.8, which I was using and Java 14, which I am now using.
+So I think I'll use the updated system with a scanner and if that fails,
+just use a built in arrayList.
