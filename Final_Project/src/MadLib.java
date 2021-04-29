@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.*;
 
 public class MadLib implements Class1Interface, Class2Interface{
     //ArrayList Instance variables
@@ -8,6 +9,8 @@ public class MadLib implements Class1Interface, Class2Interface{
     final private ArrayList<String> Verbs = myVerbs();
     final private ArrayList<String> Adverbs = myAdverbs();
     final private ArrayList<String> FemaleNames = myFemaleNames();
+    final private ArrayList<String> Verbed = modifyList("ed", Verbs);
+    final private ArrayList<String> Verbing = modifyList("ing", Verbs);
 
     //CREATING WORDS ARRAYLISTS
     //Female Names
@@ -37,12 +40,24 @@ public class MadLib implements Class1Interface, Class2Interface{
 
 
 
-    //creating and shuffling an arrayList
+    //CREATING ARRAYLIST FROM FILE
     public ArrayList<String> create_list(String fileName) {
         //Creating My_Files object
         My_Files fileNouns = new My_Files();
         //Retrieving and assigning list
         return fileNouns.Read_File(fileName);
+    }
+
+    //MODIFYING ARRAY LIST
+    private ArrayList<String> modifyList (String ending, ArrayList<String> myList){
+        ArrayList<String> editList = new ArrayList<>();
+        for (String temp : myList){
+            int myLength = temp.length() - ending.length();
+            if (ending.equals(temp.substring(myLength))){
+                editList.add(temp);
+            }
+        }
+        return editList;
     }
 
     //Female Names
@@ -54,6 +69,29 @@ public class MadLib implements Class1Interface, Class2Interface{
 
     public ArrayList<String> getAllFemaleNames(){
         return FemaleNames;
+    }
+
+    //SPECIAL CASES
+    //Verbed - verbes ending in ed
+    public String getVerbed(){
+        ArrayList<String> myList = Verbed;
+        Collections.shuffle(myList);
+        return myList.get(0);
+    }
+
+    public ArrayList<String> getAllVerbed(){
+        return Verbed;
+    }
+
+    //Verbing - verbs ending in ing
+    public String getVerbing(){
+        ArrayList<String> myList = Verbing;
+        Collections.shuffle(myList);
+        return myList.get(0);
+    }
+
+    public ArrayList<String> getAllVerbing(){
+        return Verbing;
     }
 
     // CLASS 1 INTERFACE
@@ -116,6 +154,14 @@ public class MadLib implements Class1Interface, Class2Interface{
         System.out.println(a.getVerb());
         System.out.print("Verb 2: ");
         System.out.println(a.getVerb());
+        System.out.print("Verbed 1: ");
+        System.out.println(a.getVerbed());
+        System.out.print("Verbed 2: ");
+        System.out.println(a.getVerbed());
+        System.out.print("Verbing 1: ");
+        System.out.println(a.getVerbing());
+        System.out.print("Verbing 2: ");
+        System.out.println(a.getVerbing());
         System.out.print("Adverb 1: ");
         System.out.println(a.getAdverb());
         System.out.print("Adverb 1: ");
@@ -126,6 +172,8 @@ public class MadLib implements Class1Interface, Class2Interface{
         System.out.println(a.getAllAdjectives());
         System.out.println(a.getAllVerbs());
         System.out.println(a.getAllAdverbs());
+        System.out.println(a.getAllVerbed());
+        System.out.println(a.getAllVerbing());
     }
 
 }
