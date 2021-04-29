@@ -41,7 +41,7 @@ public class MadLib implements Class1Interface, Class2Interface{
 
 
     //CREATING ARRAYLIST FROM FILE
-    public ArrayList<String> create_list(String fileName) {
+    private ArrayList<String> create_list(String fileName) {
         //Creating My_Files object
         My_Files fileNouns = new My_Files();
         //Retrieving and assigning list

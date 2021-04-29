@@ -99,33 +99,3 @@ public class My_Files {
         return fileArray;
     }
 }
-//        //Creating a file object
-//        File ab_path = new File(file_name);
-//        //Getting the absolute path of the file
-//        String ab_path_2 = ab_path.getAbsolutePath();
-//        //Removing the file name from path string
-//        ab_path_2 = ab_path_2.replace(file_name, "");
-//        ab_path_2 = ab_path_2.replace("\\", "\\\");
-//        System.out.println(ab_path_2);
-////        Path filePath = Paths.get("C:\\Users\\micro\\IdeaProjects\\Java_Final_Project\\Final_Project\\", "noun.txt");
-//        Path filePath = Paths.get(ab_path_2, file_name);
-//        File inFile = filePath.toFile();
-//
-//        //prevents file not found Exception
-//        if (Files.exists(filePath)){
-//            try (BufferedReader in = new BufferedReader(new FileReader(inFile))){
-//                String word = in.readLine();
-//                while (word != null){
-//                    fileArray.add(word);
-//                    word = in.readLine();
-//                }
-//            }
-//            catch (IOException e){
-//                System.out.println(e);
-//            }
-//        }
-//        else{
-//            System.out.println(filePath.toAbsolutePath() + "does not exist.");
-//        }
-//
-//        return fileArray;
