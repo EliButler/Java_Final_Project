@@ -7,8 +7,14 @@ public class MadLib implements Class1Interface, Class2Interface{
     final private ArrayList<String> Adjectives = myAdjective();
     final private ArrayList<String> Verbs = myVerbs();
     final private ArrayList<String> Adverbs = myAdverbs();
+    final private ArrayList<String> FemaleNames = myFemaleNames();
 
     //CREATING WORDS ARRAYLISTS
+    //Female Names
+    private ArrayList<String> myFemaleNames (){
+        return create_list("femaleNames.txt");
+    }
+
     //Nouns Creation
     private ArrayList<String> myNoun (){
         return create_list("noun.txt");
@@ -37,6 +43,17 @@ public class MadLib implements Class1Interface, Class2Interface{
         My_Files fileNouns = new My_Files();
         //Retrieving and assigning list
         return fileNouns.Read_File(fileName);
+    }
+
+    //Female Names
+    public String getFemaleName(){
+        ArrayList<String> myList = FemaleNames;
+        Collections.shuffle(myList);
+        return myList.get(0);
+    }
+
+    public ArrayList<String> getAllFemaleNames(){
+        return FemaleNames;
     }
 
     // CLASS 1 INTERFACE
@@ -83,6 +100,10 @@ public class MadLib implements Class1Interface, Class2Interface{
 
     public static void main(String[] args) {
         MadLib a = new MadLib();
+        System.out.print("Female Name 1: ");
+        System.out.println(a.getFemaleName());
+        System.out.print("Female Name 2: ");
+        System.out.println(a.getFemaleName());
         System.out.print("Noun 1: ");
         System.out.println(a.getNoun());
         System.out.print("Noun 2: ");
@@ -100,6 +121,7 @@ public class MadLib implements Class1Interface, Class2Interface{
         System.out.print("Adverb 1: ");
         System.out.println(a.getAdverb());
         System.out.println("LIST PRINT:");
+        System.out.println(a.getAllFemaleNames());
         System.out.println(a.getAllNouns());
         System.out.println(a.getAllAdjectives());
         System.out.println(a.getAllVerbs());

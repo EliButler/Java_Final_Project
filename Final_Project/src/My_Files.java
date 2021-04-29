@@ -80,6 +80,19 @@ public class My_Files {
                 fileArray.add("psychically");
                 fileArray.add("blisteringly");
             }
+            //FEMALE NAME CATCH
+            if (file_name.equals("femaleNames") || file_name.equals("femaleNames.txt")){
+                fileArray.add("Margeaux");
+                fileArray.add("Junie");
+                fileArray.add("Augustine");
+                fileArray.add("Cristal");
+                fileArray.add("Moria");
+                fileArray.add("Marcy");
+                fileArray.add("Cecelia");
+                fileArray.add("Madlen");
+                fileArray.add("Paulina");
+                fileArray.add("Ileane");
+            }
 
         }
 
