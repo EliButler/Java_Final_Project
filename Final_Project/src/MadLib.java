@@ -1,67 +1,109 @@
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
 
 public class MadLib implements Class1Interface, Class2Interface{
-    public ArrayList<String> my_list = create_list();
+    //ArrayList Instance variables
+    final private ArrayList<String> Nouns = myNoun();
+    final private ArrayList<String> Adjectives = myAdjective();
+    final private ArrayList<String> Verbs = myVerbs();
+    final private ArrayList<String> Adverbs = myAdverbs();
 
-    //creating a list
-    public ArrayList<String> create_list(){
-        ArrayList<String> my_list = new ArrayList<>();
-        my_list.add("mike");
-        my_list.add("eli");
-        my_list.add("butler");
+    //CREATING WORDS ARRAYLISTS
+    //Nouns Creation
+    private ArrayList<String> myNoun (){
+        return create_list("noun.txt");
+    }
 
-        return my_list;
+    //Adjective Creation
+    private ArrayList<String> myAdjective(){
+        return create_list("adjective.txt");
+    }
+
+    //Verbs Creation
+    private ArrayList<String> myVerbs(){
+        return create_list("verb.txt");
+    }
+
+    //Adverbs Creation
+    private ArrayList<String> myAdverbs(){
+        return create_list("adverb.txt");
+    }
+
+
+
+    //creating and shuffling an arrayList
+    public ArrayList<String> create_list(String fileName) {
+        //Creating My_Files object
+        My_Files fileNouns = new My_Files();
+        //Retrieving and assigning list
+        return fileNouns.Read_File(fileName);
     }
 
     // CLASS 1 INTERFACE
     public String getNoun(){
-        String test = "Test Noun";
-        Collections.shuffle(my_list);
-        return my_list.get(0);
+        ArrayList<String> myList = Nouns;
+        Collections.shuffle(myList);
+        return myList.get(0);
     }
 
     public String getAdjective(){
-        String test = "Test Adjective";
-        return test;
+        ArrayList<String> myList = Adjectives;
+        Collections.shuffle(myList);
+        return myList.get(0);
     }
 
     public ArrayList getAllNouns(){
-        ArrayList<String> test = new ArrayList<>();
-        return test;
+        return Nouns;
     }
 
     public ArrayList getAllAdjectives(){
-        ArrayList<String> test = new ArrayList<>();
-        return test;
+        return Adjectives;
     }
 
     //  CLASS 2 INTERFACE
     public String getVerb(){
-        String test = "Test Verb";
-        return test;
+        ArrayList<String> myList = Verbs;
+        Collections.shuffle(myList);
+        return myList.get(0);
     }
 
     public String getAdverb() {
-        String test = "Test Adverb";
-        return test;
+        ArrayList<String> myList = Adverbs;
+        Collections.shuffle(myList);
+        return myList.get(0);
     }
 
     public ArrayList getAllVerbs(){
-        ArrayList<String> test = new ArrayList<>();
-        return test;
+        return Verbs;
     }
 
     public ArrayList getAllAdverbs(){
-        ArrayList<String> test = new ArrayList<>();
-        return test;
+        return Adverbs;
     }
 
     public static void main(String[] args) {
-        MadLib my_list = new MadLib();
-        String result = my_list.getNoun();
-        System.out.println(result);
+        MadLib a = new MadLib();
+        System.out.print("Noun 1: ");
+        System.out.println(a.getNoun());
+        System.out.print("Noun 2: ");
+        System.out.println(a.getNoun());
+        System.out.print("Adjective 1: ");
+        System.out.println(a.getAdjective());
+        System.out.print("Adjective 2: ");
+        System.out.println(a.getAdjective());
+        System.out.print("Verb 1: ");
+        System.out.println(a.getVerb());
+        System.out.print("Verb 2: ");
+        System.out.println(a.getVerb());
+        System.out.print("Adverb 1: ");
+        System.out.println(a.getAdverb());
+        System.out.print("Adverb 1: ");
+        System.out.println(a.getAdverb());
+        System.out.println("LIST PRINT:");
+        System.out.println(a.getAllNouns());
+        System.out.println(a.getAllAdjectives());
+        System.out.println(a.getAllVerbs());
+        System.out.println(a.getAllAdverbs());
     }
 
 }
