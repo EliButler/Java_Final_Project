@@ -4,12 +4,10 @@ import java.util.Scanner;
 
 
 public class My_Files {
-
-    public ArrayList<String> Get_List(String file_name) {
-        ArrayList<String> checkFile = Read_File(file_name);
-
-        return checkFile;
-    }
+    //This class handles files
+    //Read file takes in the text file name, reads it into
+    //an arraylist and returns that arraylist
+    //If that fails, it will populate, it's own arraylist, just in case.
 
     public ArrayList<String> Read_File(String file_name) {
         //creating an empty arraylist
