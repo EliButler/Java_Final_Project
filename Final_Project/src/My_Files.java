@@ -64,6 +64,26 @@ public class My_Files {
                 fileArray.add("sums");
                 fileArray.add("braved");
                 fileArray.add("outeating");
+                fileArray.add("diagnosed");
+                fileArray.add("pettifogged");
+                fileArray.add("interknitted");
+                fileArray.add("trotted");
+                fileArray.add("coerced");
+                fileArray.add("sequestrated");
+                fileArray.add("ingeminated");
+                fileArray.add("niggled");
+                fileArray.add("comminuted");
+                fileArray.add("alchemized");
+                fileArray.add("enquiring");
+                fileArray.add("laicizing");
+                fileArray.add("guddling");
+                fileArray.add("lazing");
+                fileArray.add("giggling");
+                fileArray.add("sonnetizing");
+                fileArray.add("massaging");
+                fileArray.add("vitiating");
+                fileArray.add("sporulating");
+                fileArray.add("mislabelling");
             }
             //ADVERB CATCH
             if (file_name.equals("adverb") || file_name.equals("adverb.txt")){
