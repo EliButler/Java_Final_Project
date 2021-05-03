@@ -7,7 +7,7 @@ public class My_Files {
     //This class handles files
     //Read file takes in the text file name, reads it into
     //an arraylist and returns that arraylist
-    //If that fails, it will populate, it's own arraylist, just in case.
+    //If that fails, it will populate, its own arraylist, just in case.
 
     public ArrayList<String> Read_File(String file_name) {
         //creating an empty arraylist
