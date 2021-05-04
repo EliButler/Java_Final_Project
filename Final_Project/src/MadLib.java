@@ -72,7 +72,7 @@ public class MadLib implements Class1Interface, Class2Interface{
     }
 
     //SPECIAL CASES
-    //Verbed - verbes ending in ed
+    //Verbed - verbs ending in ed
     public String getVerbed(){
         ArrayList<String> myList = Verbed;
         Collections.shuffle(myList);
