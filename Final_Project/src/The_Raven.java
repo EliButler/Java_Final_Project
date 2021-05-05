@@ -21,12 +21,12 @@ public class The_Raven extends MadLib{
     private ArrayList<String> createRaven(){
         ArrayList<String> myRaven = new ArrayList<String>();
 
-        String line1 = "Once upon a midnight  adj , while I ";
-        String line2 = "pondered adj and adj , ";
+        String line1 = "Once upon a midnight adj, while I ";
+        String line2 = "pondered adj and adj, ";
         String line3 = "Over many a quaint and curious noun of forgotten noun ";
-        String line4 = "While I verbed , nearly napping suddenly there came a noun.";
+        String line4 = "While I verbed, nearly napping suddenly there came a noun.";
         String line5 = "As of noun gently rapping, rapping at my place door.";
-        String line6 = "'Tis some noun , 'I muttered, 'tapping at my place door.";
+        String line6 = "'Tis some noun, 'I muttered, 'tapping at my place door.";
         String line7 = "Only this, and nothing more.'";
         String line8 = "Ah, distinctly I remember it was in the adj December,";
         String line9 = "And each separate verbing ember wrought its noun upon the floor";
@@ -55,7 +55,7 @@ public class The_Raven extends MadLib{
     }
 
     private Boolean checkWord(String phrase){
-        ArrayList<String> myChecks = new ArrayList<>(Arrays.asList("adj", "noun", "verb", "verbed", "verbing", "adverb", "femaleName", "place"));
+        ArrayList<String> myChecks = new ArrayList<>(Arrays.asList("adj", "noun","nouns", "verb", "verbed", "verbing", "adverb", "femaleName", "place"));
         for (String i : myChecks){
             if (phrase.contains(i));
             return true;
@@ -74,6 +74,10 @@ public class The_Raven extends MadLib{
         //Checking and replacing nouns
         if (checkWord(phrase)){
             phrase = phrase.replace("noun", getNoun());
+        }
+        //Checking and replacing plural nouns
+        if (checkWord(phrase)){
+            phrase = phrase.replace("nouns", getPluralNoun());
         }
         //Checking and replacing verbs
         if (checkWord(phrase)){

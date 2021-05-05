@@ -12,6 +12,7 @@ public class MadLib implements Class1Interface, Class2Interface{
     final private ArrayList<String> Verbed = modifyList("ed", Verbs);
     final private ArrayList<String> Verbing = modifyList("ing", Verbs);
     final private ArrayList<String> Places = myPlaces();
+    final private ArrayList<String> PluralNouns = modifyList("s", Nouns);
 
     //CREATING WORDS ARRAYLISTS
     //Female Names
@@ -64,6 +65,12 @@ public class MadLib implements Class1Interface, Class2Interface{
     }
 
     //SPECIAL CASES
+    //Nouns Plural
+    public String getPluralNoun(){
+        ArrayList<String> myList = PluralNouns;
+        Collections.shuffle(myList);
+        return myList.get(0);
+    }
     //Places
     public String getPlace(){
         ArrayList<String> myList = Places;
