@@ -53,6 +53,8 @@ public class MadLib implements Class1Interface, Class2Interface{
     }
 
     //MODIFYING ARRAY LIST
+    //creates new arraylist composed of submitted arraylist and
+    //search string ending: to find verbs ending in 'ed', in arraylist
     private ArrayList<String> modifyList (String ending, ArrayList<String> myList){
         ArrayList<String> editList = new ArrayList<>();
         for (String temp : myList){
@@ -81,6 +83,7 @@ public class MadLib implements Class1Interface, Class2Interface{
     public ArrayList<String> getAllPlaces(){
         return Places;
     }
+
     //Female Names
     public String getFemaleName(){
         ArrayList<String> myList = FemaleNames;

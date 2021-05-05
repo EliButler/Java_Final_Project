@@ -13,12 +13,14 @@ import java.util.RandomAccess;
 //noun = noun
 //femaleName = female name
 public class The_Raven extends MadLib{
-    public ArrayList<String> Raven = createRaven();
+    //7. creates an instance variable upon class instantiation
+    private ArrayList<String> Raven = createRaven();
 
 
 
     //The Raven Stanzas
     private ArrayList<String> createRaven(){
+        //8. Creates ArrayList of strings composed of unedited poem
         ArrayList<String> myRaven = new ArrayList<String>();
 
         String line1 = "Once upon a midnight adj, while I ";
@@ -55,6 +57,7 @@ public class The_Raven extends MadLib{
     }
 
     private Boolean checkWord(String phrase){
+        //6. checks to see if replacement word is in submitted phrase
         ArrayList<String> myChecks = new ArrayList<>(Arrays.asList("adj", "noun","nouns", "verb", "verbed", "verbing", "adverb", "femaleName", "place"));
         for (String i : myChecks){
             if (phrase.contains(i));
@@ -63,29 +66,38 @@ public class The_Raven extends MadLib{
         return false;
     }
 
-    public String wordReplace(String phrase){
+    private String wordReplace(String phrase){
+        //5. calls checkword, if true, replaces word
         if (!checkWord(phrase)){
             return phrase;
+        }
+        //Checking and replacing adverbs
+        //this has to come first so as not to change verbs
+        if (checkWord(phrase)){
+            phrase = phrase.replace("adverb", getAdverb());
         }
         //Checking and replacing adjectives
         if (checkWord(phrase)){
             phrase = phrase.replace("adj", getAdjective());
         }
-        //Checking and replacing nouns
-        if (checkWord(phrase)){
-            phrase = phrase.replace("noun", getNoun());
-        }
         //Checking and replacing plural nouns
         if (checkWord(phrase)){
             phrase = phrase.replace("nouns", getPluralNoun());
         }
-        //Checking and replacing verbs
+        //Checking and replacing nouns
         if (checkWord(phrase)){
-            phrase = phrase.replace("verb", getVerb());
+            phrase = phrase.replace("noun", getNoun());
         }
-        //Checking and replacing verbed
+        //Checking and replacing verbs ending in "ing"
+        if (checkWord(phrase)){
+            phrase = phrase.replace("verbing", getVerbing());
+        }
+        //Checking and replacing verbs ending in "ed"
         if (checkWord(phrase)){
             phrase = phrase.replace("verbed", getVerbed());
+        }
+        if (checkWord(phrase)){
+            phrase = phrase.replace("verb", getVerb());
         }
         if (checkWord(phrase)){
             phrase = phrase.replace("femaleName", getFemaleName());
@@ -97,7 +109,8 @@ public class The_Raven extends MadLib{
         return phrase;
     }
 
-    public ArrayList<String> editRave(){
+    private ArrayList<String> editRave(){
+        //4. Creates a new arraylist, then line by line replaces the required words
         ArrayList<String> madlibRaven = new ArrayList<String>();
         for (String i : Raven){
                 String temp = wordReplace(i);
@@ -113,6 +126,7 @@ public class The_Raven extends MadLib{
     }
 
     public void getMadlibRaven(){
+        //3. Calls editRave method, and prints out each line.
         editRave();
         for ( String i : editRave()){
             System.out.println(i);
@@ -120,11 +134,12 @@ public class The_Raven extends MadLib{
     }
 
     public static void main(String[] args) {
+        //1. Creating a new Raven object - Raven inherits from MadLib
         The_Raven a = new The_Raven();
-        System.out.println("The Raven");
-        a.getRaven();
-
+//        System.out.println("The Raven");
+//        a.getRaven();
         System.out.println("\nMad Lib Raven");
+        //2. Calling method to display altered text
         a.getMadlibRaven();
     }
 }
