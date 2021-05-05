@@ -1,7 +1,6 @@
 import java.util.ArrayList;
 import java.lang.String;
 import java.util.Arrays;
-import java.util.RandomAccess;
 
 //adj = adjective
 //noun = noun
@@ -14,14 +13,14 @@ import java.util.RandomAccess;
 //femaleName = female name
 public class The_Raven extends MadLib{
     //7. creates an instance variable upon class instantiation
-    private ArrayList<String> Raven = createRaven();
+    final private ArrayList<String> Raven = createRaven();
 
 
 
     //The Raven Stanzas
     private ArrayList<String> createRaven(){
         //8. Creates ArrayList of strings composed of unedited poem
-        ArrayList<String> myRaven = new ArrayList<String>();
+        ArrayList<String> myRaven = new ArrayList<>();
 
         String line1 = "Once upon a midnight adj, while I ";
         String line2 = "pondered adj and adj, ";
@@ -60,8 +59,9 @@ public class The_Raven extends MadLib{
         //6. checks to see if replacement word is in submitted phrase
         ArrayList<String> myChecks = new ArrayList<>(Arrays.asList("adj", "noun","nouns", "verb", "verbed", "verbing", "adverb", "femaleName", "place"));
         for (String i : myChecks){
-            if (phrase.contains(i));
-            return true;
+            if (phrase.contains(i)) {
+                return true;
+            }
         }
         return false;
     }
@@ -111,7 +111,7 @@ public class The_Raven extends MadLib{
 
     private ArrayList<String> editRave(){
         //4. Creates a new arraylist, then line by line replaces the required words
-        ArrayList<String> madlibRaven = new ArrayList<String>();
+        ArrayList<String> madlibRaven = new ArrayList<>();
         for (String i : Raven){
                 String temp = wordReplace(i);
                 madlibRaven.add(temp);
