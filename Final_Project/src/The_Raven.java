@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.lang.String;
 //adj = adjective
 //noun = noun
 //verb = verb
@@ -49,21 +50,38 @@ public class The_Raven extends MadLib{
         return myRaven;
     }
 
+    public String wordReplace(String wordtype, String phrase){
+        int index = phrase.indexOf(wordtype);
+        if (index != -1){
+            String myString = "";
+            switch (wordtype){
+                case "adj":
+                    phrase.replace("adj", getAdjective());
+                    break;
+
+            }
+            return phrase;
+        }
+        else return 0;
+    }
+
     public ArrayList<String> editRave(){
         ArrayList<String> madlibRaven = new ArrayList<String>();
         for (String i : Raven) {
-            String a = i.replace("adj", getAdjective());
-            String b = i.replace("noun", getNoun());
-            String c = i.replace("adverb", getAdverb());
-            String d = i.replace("verb", getVerb());
-            String e = i.replace("verbing", getVerbing());
-            String f = i.replace("verbed", getVerbed());
-            madlibRaven.add(a);
-            madlibRaven.add(b);
-            madlibRaven.add(c);
-            madlibRaven.add(d);
-            madlibRaven.add(e);
-            madlibRaven.add(f);
+            String temp = wordReplace("adj", i);
+            madlibRaven.add(temp);
+//            String a = i.replace("adj", getAdjective());
+//            String b = i.replace("noun", getNoun());
+//            String c = i.replace("adverb", getAdverb());
+//            String d = i.replace("verb", getVerb());
+//            String e = i.replace("verbing", getVerbing());
+//            String f = i.replace("verbed", getVerbed());
+//            madlibRaven.add(a);
+//            madlibRaven.add(b);
+//            madlibRaven.add(c);
+//            madlibRaven.add(d);
+//            madlibRaven.add(e);
+//            madlibRaven.add(f);
         }
 
         return madlibRaven;
