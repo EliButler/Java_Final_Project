@@ -11,6 +11,7 @@ public class MadLib implements Class1Interface, Class2Interface{
     final private ArrayList<String> FemaleNames = myFemaleNames();
     final private ArrayList<String> Verbed = modifyList("ed", Verbs);
     final private ArrayList<String> Verbing = modifyList("ing", Verbs);
+    final private ArrayList<String> Places = myPlaces();
 
     //CREATING WORDS ARRAYLISTS
     //Female Names
@@ -38,6 +39,8 @@ public class MadLib implements Class1Interface, Class2Interface{
         return create_list("adverb.txt");
     }
 
+    //Places Creation
+    private ArrayList<String> myPlaces() {return create_list("places.txt");}
 
 
     //CREATING ARRAYLIST FROM FILE
@@ -60,6 +63,17 @@ public class MadLib implements Class1Interface, Class2Interface{
         return editList;
     }
 
+    //SPECIAL CASES
+    //Places
+    public String getPlace(){
+        ArrayList<String> myList = Places;
+        Collections.shuffle(myList);
+        return myList.get(0);
+    }
+
+    public ArrayList<String> getAllPlaces(){
+        return Places;
+    }
     //Female Names
     public String getFemaleName(){
         ArrayList<String> myList = FemaleNames;
@@ -71,7 +85,6 @@ public class MadLib implements Class1Interface, Class2Interface{
         return FemaleNames;
     }
 
-    //SPECIAL CASES
     //Verbed - verbs ending in ed
     public String getVerbed(){
         ArrayList<String> myList = Verbed;

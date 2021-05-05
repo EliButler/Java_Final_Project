@@ -1,5 +1,8 @@
 import java.util.ArrayList;
 import java.lang.String;
+import java.util.Arrays;
+import java.util.RandomAccess;
+
 //adj = adjective
 //noun = noun
 //verb = verb
@@ -7,10 +10,11 @@ import java.lang.String;
 //verbing = verbing
 //nouns = plural
 //adverb = adverb
+//noun = noun
 //femaleName = female name
 public class The_Raven extends MadLib{
     public ArrayList<String> Raven = createRaven();
-    public ArrayList<String> madlibRaven = editRave();
+
 
 
     //The Raven Stanzas
@@ -18,9 +22,9 @@ public class The_Raven extends MadLib{
         ArrayList<String> myRaven = new ArrayList<String>();
 
         String line1 = "Once upon a midnight  adj , while I ";
-        String line2 = " pondered adj and adj , ";
+        String line2 = "pondered adj and adj , ";
         String line3 = "Over many a quaint and curious noun of forgotten noun ";
-        String line4 = "While I verbed , nearly napping suddenly there came a  noun.";
+        String line4 = "While I verbed , nearly napping suddenly there came a noun.";
         String line5 = "As of noun gently rapping, rapping at my place door.";
         String line6 = "'Tis some noun , 'I muttered, 'tapping at my place door.";
         String line7 = "Only this, and nothing more.'";
@@ -30,7 +34,7 @@ public class The_Raven extends MadLib{
         String line11 = "From my nouns surcease of sorrow - sorrow for the adj Lenore-";
         String line12 = "For the adj and adj maiden whom the angels";
         String line13 = "named femaleName - ";
-        String line14 = "Nameless here evermore";
+        String line14 = "Nameless here evermore.";
 
         myRaven.add(line1);
         myRaven.add(line2);
@@ -50,56 +54,73 @@ public class The_Raven extends MadLib{
         return myRaven;
     }
 
-    public String wordReplace(String wordtype, String phrase){
-        int index = phrase.indexOf(wordtype);
-        if (index != -1){
-            String myString = "";
-            switch (wordtype){
-                case "adj":
-                    phrase.replace("adj", getAdjective());
-                    break;
+    private Boolean checkWord(String phrase){
+        ArrayList<String> myChecks = new ArrayList<>(Arrays.asList("adj", "noun", "verb", "verbed", "verbing", "adverb", "femaleName", "place"));
+        for (String i : myChecks){
+            if (phrase.contains(i));
+            return true;
+        }
+        return false;
+    }
 
-            }
+    public String wordReplace(String phrase){
+        if (!checkWord(phrase)){
             return phrase;
         }
-        else return 0;
+        //Checking and replacing adjectives
+        if (checkWord(phrase)){
+            phrase = phrase.replace("adj", getAdjective());
+        }
+        //Checking and replacing nouns
+        if (checkWord(phrase)){
+            phrase = phrase.replace("noun", getNoun());
+        }
+        //Checking and replacing verbs
+        if (checkWord(phrase)){
+            phrase = phrase.replace("verb", getVerb());
+        }
+        //Checking and replacing verbed
+        if (checkWord(phrase)){
+            phrase = phrase.replace("verbed", getVerbed());
+        }
+        if (checkWord(phrase)){
+            phrase = phrase.replace("femaleName", getFemaleName());
+        }
+        if (checkWord(phrase)){
+            phrase = phrase.replace("place", getPlace());
+        }
+
+        return phrase;
     }
 
     public ArrayList<String> editRave(){
         ArrayList<String> madlibRaven = new ArrayList<String>();
-        for (String i : Raven) {
-            String temp = wordReplace("adj", i);
-            madlibRaven.add(temp);
-//            String a = i.replace("adj", getAdjective());
-//            String b = i.replace("noun", getNoun());
-//            String c = i.replace("adverb", getAdverb());
-//            String d = i.replace("verb", getVerb());
-//            String e = i.replace("verbing", getVerbing());
-//            String f = i.replace("verbed", getVerbed());
-//            madlibRaven.add(a);
-//            madlibRaven.add(b);
-//            madlibRaven.add(c);
-//            madlibRaven.add(d);
-//            madlibRaven.add(e);
-//            madlibRaven.add(f);
+        for (String i : Raven){
+                String temp = wordReplace(i);
+                madlibRaven.add(temp);
         }
-
         return madlibRaven;
     }
 
-    public ArrayList<String> getRaven(){
-        return Raven;
+    public void getRaven(){
+        for (String i : Raven){
+            System.out.println(i);
+        }
     }
 
-    public ArrayList<String> getMadlibRaven(){
-        return madlibRaven;
+    public void getMadlibRaven(){
+        editRave();
+        for ( String i : editRave()){
+            System.out.println(i);
+        }
     }
 
     public static void main(String[] args) {
         The_Raven a = new The_Raven();
-        System.out.println(a.getRaven());
-        System.out.println(a.madlibRaven);
+        System.out.println("The Raven");
+        a.getRaven();
+
+        System.out.println("\nMad Lib Raven");
+        a.getMadlibRaven();
     }
-
-
 }
