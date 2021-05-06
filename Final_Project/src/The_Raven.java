@@ -1,3 +1,4 @@
+import javax.swing.plaf.synth.SynthMenuBarUI;
 import java.util.ArrayList;
 import java.lang.String;
 import java.util.Arrays;
@@ -55,6 +56,28 @@ public class The_Raven extends MadLib{
         return myRaven;
     }
 
+    private int noDup(String test, String phrase){
+        //Checking for first found subsring
+        int loc = phrase.indexOf(test);
+        return loc;
+    }
+
+    private String dupReplace(String test, String phrase, String replacement){
+        //replaces the first search string with a replacement string in the given phrase
+        String myPhrase = "";
+        int begin = noDup(test, phrase);
+        int end = test.length() + begin - 1;
+        if (end > replacement.length()){
+            end = replacement.length() - 1;
+        }
+        else{
+            end = test.length() + begin - 1;
+        }
+        int myLength = phrase.length();
+        myPhrase = phrase.substring(0, begin) + replacement + phrase.substring((end + test.length()), myLength);
+        return myPhrase;
+    }
+
     private Boolean checkWord(String phrase){
         //6. checks to see if replacement word is in submitted phrase
         ArrayList<String> myChecks = new ArrayList<>(Arrays.asList("adj", "noun","nons", "verb", "vbd", "vbing", "advrb", "femaleName", "place"));
@@ -71,29 +94,63 @@ public class The_Raven extends MadLib{
         if (!checkWord(phrase)){
             return phrase;
         }
+
         //Checking and replacing adverbs
-        //this has to come first so as not to change verbs
         if (checkWord(phrase)){
+            int myLoc = noDup("advrb", phrase);
+            if (myLoc != -1){
+                phrase = dupReplace("advrb", phrase, getAdverb());
+
+            }
             phrase = phrase.replace("advrb", getAdverb());
         }
+
         //Checking and replacing adjectives
         if (checkWord(phrase)){
+            int myLoc = noDup("adj", phrase);
+            if (myLoc != -1){
+                phrase = dupReplace("adj", phrase, getAdjective());
+
+            }
             phrase = phrase.replace("adj", getAdjective());
         }
+
         //Checking and replacing plural nouns
         if (checkWord(phrase)){
+            int myLoc = noDup("nons", phrase);
+            if (myLoc != -1){
+                phrase = dupReplace("nons", phrase, getPluralNoun());
+
+            }
             phrase = phrase.replace("nons", getPluralNoun());
         }
         //Checking and replacing noun
         if (checkWord(phrase)){
+            int myLoc = noDup("noun", phrase);
+            if (myLoc != -1){
+                phrase = dupReplace("noun", phrase, getNoun());
+
+            }
             phrase = phrase.replace("noun", getNoun());
         }
+
         //Checking and replacing verbs ending in "ing"
         if (checkWord(phrase)){
+            int myLoc = noDup("vbing", phrase);
+            if (myLoc != -1){
+                phrase = dupReplace("vbing", phrase, getVerbing());
+
+            }
             phrase = phrase.replace("vbing", getVerbing());
         }
+
         //Checking and replacing verbs ending in "ed"
         if (checkWord(phrase)){
+            int myLoc = noDup("vbd", phrase);
+            if (myLoc != -1){
+                phrase = dupReplace("vbd", phrase, getVerbed());
+
+            }
             phrase = phrase.replace("vbd", getVerbed());
         }
         if (checkWord(phrase)){
@@ -138,7 +195,7 @@ public class The_Raven extends MadLib{
         The_Raven a = new The_Raven();
 //        System.out.println("The Raven");
 //        a.getRaven();
-        System.out.println("\nMad Lib Raven");
+//        System.out.println("\nMad Lib Raven");
         //2. Calling method to display altered text
         a.getMadlibRaven();
     }
