@@ -4,11 +4,11 @@ import java.util.Arrays;
 
 //adj = adjective
 //noun = noun
+//nouns = nons
 //verb = verb
-//verbed = verbed
-//verbing = verbing
-//nouns = plural
-//adverb = adverb
+//verbed = vbd
+//verbing = vbing
+//adverb = advrb
 //noun = noun
 //femaleName = female name
 public class The_Raven extends MadLib{
@@ -25,14 +25,14 @@ public class The_Raven extends MadLib{
         String line1 = "Once upon a midnight adj, while I ";
         String line2 = "pondered adj and adj, ";
         String line3 = "Over many a quaint and curious noun of forgotten noun ";
-        String line4 = "While I verbed, nearly napping suddenly there came a noun.";
+        String line4 = "While I vbd, nearly napping suddenly there came a noun.";
         String line5 = "As of noun gently rapping, rapping at my place door.";
         String line6 = "'Tis some noun, 'I muttered, 'tapping at my place door.";
         String line7 = "Only this, and nothing more.'";
         String line8 = "Ah, distinctly I remember it was in the adj December,";
-        String line9 = "And each separate verbing ember wrought its noun upon the floor";
-        String line10 = "Eagerly I verbed the morrow;- adverb I had sought to borrow";
-        String line11 = "From my nouns surcease of sorrow - sorrow for the adj Lenore-";
+        String line9 = "And each separate vbing ember wrought its noun upon the floor";
+        String line10 = "Eagerly I vbd the morrow;- advrb I had sought to borrow";
+        String line11 = "From my nons surcease of sorrow - sorrow for the adj Lenore-";
         String line12 = "For the adj and adj maiden whom the angels";
         String line13 = "named femaleName - ";
         String line14 = "Nameless here evermore.";
@@ -57,7 +57,7 @@ public class The_Raven extends MadLib{
 
     private Boolean checkWord(String phrase){
         //6. checks to see if replacement word is in submitted phrase
-        ArrayList<String> myChecks = new ArrayList<>(Arrays.asList("adj", "noun","nouns", "verb", "verbed", "verbing", "adverb", "femaleName", "place"));
+        ArrayList<String> myChecks = new ArrayList<>(Arrays.asList("adj", "noun","nons", "verb", "vbd", "vbing", "advrb", "femaleName", "place"));
         for (String i : myChecks){
             if (phrase.contains(i)) {
                 return true;
@@ -74,7 +74,7 @@ public class The_Raven extends MadLib{
         //Checking and replacing adverbs
         //this has to come first so as not to change verbs
         if (checkWord(phrase)){
-            phrase = phrase.replace("adverb", getAdverb());
+            phrase = phrase.replace("advrb", getAdverb());
         }
         //Checking and replacing adjectives
         if (checkWord(phrase)){
@@ -82,19 +82,19 @@ public class The_Raven extends MadLib{
         }
         //Checking and replacing plural nouns
         if (checkWord(phrase)){
-            phrase = phrase.replace("nouns", getPluralNoun());
+            phrase = phrase.replace("nons", getPluralNoun());
         }
-        //Checking and replacing nouns
+        //Checking and replacing noun
         if (checkWord(phrase)){
             phrase = phrase.replace("noun", getNoun());
         }
         //Checking and replacing verbs ending in "ing"
         if (checkWord(phrase)){
-            phrase = phrase.replace("verbing", getVerbing());
+            phrase = phrase.replace("vbing", getVerbing());
         }
         //Checking and replacing verbs ending in "ed"
         if (checkWord(phrase)){
-            phrase = phrase.replace("verbed", getVerbed());
+            phrase = phrase.replace("vbd", getVerbed());
         }
         if (checkWord(phrase)){
             phrase = phrase.replace("verb", getVerb());
