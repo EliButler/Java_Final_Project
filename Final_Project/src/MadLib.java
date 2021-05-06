@@ -130,11 +130,11 @@ public class MadLib implements Class1Interface, Class2Interface{
         return myList.get(0);
     }
 
-    public ArrayList getAllNouns(){
+    public ArrayList<String> getAllNouns(){
         return Nouns;
     }
 
-    public ArrayList getAllAdjectives(){
+    public ArrayList<String> getAllAdjectives(){
         return Adjectives;
     }
 
@@ -151,11 +151,11 @@ public class MadLib implements Class1Interface, Class2Interface{
         return myList.get(0);
     }
 
-    public ArrayList getAllVerbs(){
+    public ArrayList<String> getAllVerbs(){
         return Verbs;
     }
 
-    public ArrayList getAllAdverbs(){
+    public ArrayList<String> getAllAdverbs(){
         return Adverbs;
     }
 
