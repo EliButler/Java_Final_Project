@@ -15,8 +15,8 @@ import java.util.Arrays;
 public class The_Raven extends MadLib{
     //7. creates an instance variable upon class instantiation
     final private ArrayList<String> Raven = createRaven();
-
-
+    //This prevents the place in poem from being two different places.
+    private String place = getPlace();
 
     //The Raven Stanzas
     private ArrayList<String> createRaven(){
@@ -57,24 +57,29 @@ public class The_Raven extends MadLib{
     }
 
     private int noDup(String test, String phrase){
-        //Checking for first found subsring
-        int loc = phrase.indexOf(test);
-        return loc;
+        //Checking for first found subsring, if found returns beginning index
+        //else returns -1
+        return phrase.indexOf(test);
     }
 
     private String dupReplace(String test, String phrase, String replacement){
         //replaces the first search string with a replacement string in the given phrase
-        String myPhrase = "";
+        //returns new phrase
+        String myPhrase;
+        //first index of test phrase
         int begin = noDup(test, phrase);
-        int end = test.length() + begin - 1;
-        if (end > replacement.length()){
-            end = replacement.length() - 1;
+        //last index of test phrase
+        int end = (test.length()) + (begin);
+        //to prevent out of bound indices, if test string is at end of phrase
+        if (end > phrase.length()){
+            end = replacement.length();
         }
         else{
-            end = test.length() + begin - 1;
+            end = test.length() + begin;
         }
         int myLength = phrase.length();
-        myPhrase = phrase.substring(0, begin) + replacement + phrase.substring((end + test.length()), myLength);
+        //new phrase creation
+        myPhrase = phrase.substring(0, begin) + replacement + phrase.substring(end, myLength);
         return myPhrase;
     }
 
@@ -153,6 +158,7 @@ public class The_Raven extends MadLib{
             }
             phrase = phrase.replace("vbd", getVerbed());
         }
+        //I left these unchanged because none of them are duplicates in the same phrase
         if (checkWord(phrase)){
             phrase = phrase.replace("verb", getVerb());
         }
@@ -160,7 +166,7 @@ public class The_Raven extends MadLib{
             phrase = phrase.replace("femaleName", getFemaleName());
         }
         if (checkWord(phrase)){
-            phrase = phrase.replace("place", getPlace());
+            phrase = phrase.replace("place", place);
         }
 
         return phrase;
@@ -177,6 +183,7 @@ public class The_Raven extends MadLib{
     }
 
     public void getRaven(){
+        //Prints unaltered version of the poem
         for (String i : Raven){
             System.out.println(i);
         }
@@ -193,9 +200,6 @@ public class The_Raven extends MadLib{
     public static void main(String[] args) {
         //1. Creating a new Raven object - Raven inherits from MadLib
         The_Raven a = new The_Raven();
-//        System.out.println("The Raven");
-//        a.getRaven();
-//        System.out.println("\nMad Lib Raven");
         //2. Calling method to display altered text
         a.getMadlibRaven();
     }

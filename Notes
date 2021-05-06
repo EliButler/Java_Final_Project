@@ -1,8 +1,3 @@
 Alright, 14 original lines.
 14 Madlib lines.
-Okay, I'll work on removing duplicates later.
-What I'm thinking is that I should change the replacement names
-in the original poem and search string, so there can be no possible
-overlap. Such as a verb replacing an adverb, because the string search method
-explicitly search for only the word, but anything with the search word in it.
-Should be easy now that the code is done.
+All done. No duplicates, correct words, number of lines and places are the same.
