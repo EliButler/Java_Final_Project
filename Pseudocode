@@ -1,0 +1,149 @@
+Class My_Files
+    Methods:
+        Read_File
+            try:
+                1. creates file class
+                2. create scanner using file class variable
+                3. while loop read in each word
+                    - add each word to arraylist
+                return array list
+            catch:
+                - if files do not open, create and populate arraylist
+                return arraylist
+
+Class MadLib
+    ArrayList Instance variables:
+        - FINAL, IMMUTABLE
+        - Noun(s), Adjectives, Verbs('ed', 'ing') FemaleNames,
+            Places
+
+    Methods:
+        myFemalenames
+        myNoun
+        myAdjective
+        myVerbs
+        myAdverbs
+        myPlaces
+            - call these to create arraylist of words when object is instantiated
+
+        create_list
+            1. creates a My_Files object
+                - takes string variable
+                returns word array
+
+         modifylist
+            1. creates a modified word list based on word conjugation
+                -takes string variable and arraylist
+                -used on plural nouns, verbs ending in 'ed' and 'ing'
+                returns word array
+
+        getPluralNoun
+        getPlace
+        getFemaleName
+        getVerb
+        getVerbing
+        getNoun
+        getAdjective
+            1. create new temporary arraylist
+            2. copy in appropriate words
+            3. use collections.shuffle on temp list
+            4. return word at first index
+
+        getAllNouns
+        getAllAdjectives
+        getAllVerbs
+        getAllAdverbs
+        getAllVerbed
+        getAllVerbing
+        getAllFemaleNames
+        getAllPlaces
+            1. return appropriate word arraylist (which are private)
+
+
+
+Class The_Raven
+    Instance Variables:
+        Raven
+            - created on instantiation of object
+            - arraylist composed of strings of lines of unedited poem
+            - calls method createRaven
+
+    Methods:
+        createRaven
+            - creates empty arraylist
+            - adds each line of poem as string to empty array list
+            returns arraylist
+
+        noDup
+            - takes a search string and phrase from poem as variables
+            - searches for first index of search string in phrase
+                - phrase.indexOf(search)
+            returns index if found
+                else returns -1
+
+        dupReplace
+            - takes in search string, phrase string and replacement string
+            - copy phrase into myPhrase
+            - integer variable begin holds result of noDup(search, phrase)
+            - integer variable end is search string length + begin
+                - using these 2 variables I know where my search string
+                starts and where it ends in the phrase
+            - if the end integer is larger than the phrase.length
+                - set end to length of replacement string
+                - this was needed in case the search word was at the end of the phrase
+                and the replacement word was longer than the search word, prevents
+                out of bound indexing
+            else
+                - end is search strings length + beginning index
+
+            - integer variable set to phrase length
+            - create new phrase composed of
+                - beginning of phrase to search string first index +
+                  replacement string +
+                  index at end of search string to end of phrase
+
+             return new phrase
+
+        checkWord
+            1. takes string phrase as variable
+            2. creates an array composed of search strings
+            3. using for loop checks phrase for search string
+            returns true if found
+            else returns false
+
+        wordReplace
+            1. takes string phrase as variable
+            2. uses checkWord to see if search string is in phrase
+            3. if checkWord is false
+                return phase
+            4. if checkWord is true
+                1. int variable value is result of noDup method
+                2. if int variable is NOT -1
+                    1. new phrase = dupReplace (search string, phrase, get- appropriate word)
+                        - the above handles the first found search word
+                    2. using the same above phrase variable
+                        - use phrase.repalace(target, replacement)
+
+            * the above algorithm is used for all words in their own if statements
+
+            *** As a side note: After we had created a way to not have duplicate replacement
+            words substituted in the poem, it later became obvious that we could do away
+            with nearly 50 lines of repeated code by calling dupReplace against the checkword
+            list recursively, until noDup returned -1 ***
+
+
+        editRave
+            1. creates empty arraylist
+            2. using for loop on Raven instance arraylist variable
+            3. create temporary string variable
+            4. calls wordReplace on temp string
+            5. adds result to empty arraylist
+            return populated list
+
+        getMadLibRaven
+            1. using for loop, displays edited Raven poem line, by line
+
+        main
+            1. create raven object
+            2. calls raven.getMadLibRaven
+            3. displays poem
